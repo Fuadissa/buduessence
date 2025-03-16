@@ -1,16 +1,20 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-fade";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { DialogBox } from "@/components/DialogBox";
 
 export const Hero = () => {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
   return (
     <div className="grid grid-cols-12 h-[90vh] lg:h-[100vh] bg-[radial-gradient(ellipse_200%_100%_at_bottom_left,#f8efa1,#fffde8_100%)] pt-28 relative">
+      <DialogBox open={isDialogOpen} onOpenChange={setIsDialogOpen} />
       <div className="col-span-12 lg:col-span-7 pt-10 flex flex-col z-40">
         <motion.div
           className="md:w-[600px] lg:w-[478px] pl-10 md:pl-28 "
@@ -26,19 +30,22 @@ export const Hero = () => {
             personalized health services, and a supportive community.
           </p>
           <div className="flex gap-3 items-center mt-[30px]">
-            <a
-              type="button"
-              className="btn cursor-pointer px-8 border-[#af912d] border-2"
-              href="#explore"
-            >
-              Get Started
-            </a>
             <button
               type="button"
-              className="text-[#dfdcdc] lg:text-[#2b2b2b] btn btn-text gap-1 border-2 border-[#af912d] hover:bg-[#af912d] hover:text-white"
+              className="btn cursor-pointer px-8 border-[#af912d] border-2"
+              onClick={() => setIsDialogOpen(true)}
             >
-              <span>Learn more</span>
+              Get Started
             </button>
+            <a
+              type="button"
+              href="https://calendly.com/buduessence/consultancy-session"
+              target="_blank"
+              rel="noopener"
+              className="text-[#dfdcdc] cursor-pointer lg:text-[#2b2b2b] btn btn-text gap-1 border-2 border-[#af912d] hover:bg-[#af912d] hover:text-white"
+            >
+              <span>Speak to a Specialist</span>
+            </a>
           </div>
         </motion.div>
       </div>

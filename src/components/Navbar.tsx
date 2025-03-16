@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { twMerge } from "tailwind-merge";
 import Image from "next/image";
+import { DialogBox } from "./DialogBox";
 
 const headerVariants = {
   hidden: { opacity: 0, y: -50 },
@@ -29,6 +30,8 @@ export const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
   return (
     <motion.header
       className={twMerge(
@@ -40,6 +43,7 @@ export const Navbar = () => {
       animate="visible"
       variants={headerVariants}
     >
+      <DialogBox open={isDialogOpen} onOpenChange={setIsDialogOpen} />
       <div className="w-full flex justify-between items-center">
         <div
           className={twMerge(
@@ -77,7 +81,10 @@ export const Navbar = () => {
             Contact Us
           </div>
           <div className="flex justify-center items-center">
-            <button className="bg-[#dabd5f] text-white px-4 py-2 rounded-md">
+            <button
+              className="bg-[#dabd5f] text-white px-4 py-2 rounded-md cursor-pointer"
+              onClick={() => setIsDialogOpen(true)}
+            >
               Join the Movement
             </button>
           </div>

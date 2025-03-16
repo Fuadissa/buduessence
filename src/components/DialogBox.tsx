@@ -5,7 +5,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import {
   Form,
   FormControl,
@@ -55,11 +60,20 @@ export function DialogBox({ open, onOpenChange }: DialogBoxProps) {
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
+    // Reset the form
+    form.reset();
+    // Close the dialog
+    onOpenChange(false);
   }
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-[800px] max-h-[90vh] overflow-y-auto">
+        <DialogHeader>
+          <DialogTitle className="text-2xl font-bold hidden">
+            Join Budu Essence
+          </DialogTitle>
+        </DialogHeader>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <div className="space-y-4">
@@ -71,7 +85,11 @@ export function DialogBox({ open, onOpenChange }: DialogBoxProps) {
                   <FormItem>
                     <FormLabel>Full Name</FormLabel>
                     <FormControl>
-                      <Input placeholder="Enter your full name" {...field} className="focus-visible:ring-[#f8efa1]/50" />
+                      <Input
+                        placeholder="Enter your full name"
+                        {...field}
+                        className="focus-visible:ring-[#f8efa1]/50"
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -89,7 +107,11 @@ export function DialogBox({ open, onOpenChange }: DialogBoxProps) {
                   <FormItem>
                     <FormLabel>Date of Birth</FormLabel>
                     <FormControl>
-                      <Input type="date" {...field} className="focus-visible:ring-[#f8efa1]/50"/>
+                      <Input
+                        type="date"
+                        {...field}
+                        className="focus-visible:ring-[#f8efa1]/50"
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -324,6 +346,7 @@ export function DialogBox({ open, onOpenChange }: DialogBoxProps) {
             <Button
               type="submit"
               className="w-full bg-[#dabd5f] text-black hover:bg-[#f8efa1]/90"
+              onChange={() => onOpenChange(false)}
             >
               Submit
             </Button>

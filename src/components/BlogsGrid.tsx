@@ -13,15 +13,14 @@ export const BlogsGrid: React.FC<{ data: BlogContent[] }> = ({ data }) => {
     <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {/* {data.map((blog, index) => ( */}
       {data.map((blog) => (
-        <motion.a
-          onClick={() => router.push(`/blogs/1`)}
+        <motion.div
+          onClick={() => router.push(`/blogs/${blog.slug.current}`)}
           key={blog._id}
           className="bg-white rounded-sm shadow-lg hover:shadow-xl transition duration-300 overflow-hidden border border-gray-200 p-2"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 1 * 0.1 }}
           viewport={{ once: false, amount: 0.2 }}
-          href={`/blogs/${blog.slug.current}`}
         >
           <Image
             src={urlFor(blog.mainImage).url()}
@@ -44,7 +43,7 @@ export const BlogsGrid: React.FC<{ data: BlogContent[] }> = ({ data }) => {
               5 min read
             </motion.div>
           </div>
-        </motion.a>
+        </motion.div>
       ))}
 
       {/* ))} */}

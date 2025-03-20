@@ -18,7 +18,7 @@ export default defineConfig({
   projectId,
   dataset,
   title: 'Budu Essence Studio',
-  favicon: "/asset/budu logo.png",
+  favicon: "/asset/budu-logo.svg",
   // Add and edit the content schema in the './sanity/schemaTypes' folder
   schema,
   plugins: [

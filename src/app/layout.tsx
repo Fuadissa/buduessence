@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   icons: [
     {
       rel: "icon",
-      url: "/asset/budu logo.png",
+      url: "/asset/budu-logo.svg",
     },
   ],
 };

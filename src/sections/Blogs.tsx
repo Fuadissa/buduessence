@@ -6,6 +6,7 @@ import { motion, useInView } from "framer-motion";
 import { BlogsGrid } from "@/components/BlogsGrid";
 import { BlogContent } from "@/types";
 import { getBlogsContent } from "@/sanity/sanity-utils";
+import Link from "next/link";
 
 export const Blogs = () => {
   const ref = useRef(null);
@@ -37,9 +38,9 @@ export const Blogs = () => {
         <h2 className="z-40 text-4xl md:text-4xl lg:text-6xl font-bold mt-6 tracking-tighter bg-gradient-to-b from-black to-[#f8efa1] text-transparent bg-clip-text">
           Our Latest Articles
         </h2>
-        <a className="btn mt-8 py-4 px-7" href="/blogs">
+        <Link className="btn mt-8 py-4 px-7" href="/blogs">
           Browse all article
-        </a>
+        </Link>
       </motion.div>
 
       {/* Blog Cards */}

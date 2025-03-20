@@ -1,31 +1,31 @@
 "use client";
 
-// import { getSocialLinks } from "@/sanity/sanity-utils";
+import { getSocialLinks } from "@/sanity/sanity-utils";
 import { motion } from "framer-motion";
 import Image from "next/image";
-//import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { twMerge } from "tailwind-merge";
 
-// interface SocialLinksContent {
-//   linkedin: string;
-//   twitter: string;
-//   facebook: string;
-//   instagram: string;
-//   youtube: string;
-// }
+interface SocialLinksContent {
+  linkedin: string;
+  twitter: string;
+  facebook: string;
+  instagram: string;
+  youtube: string;
+}
 
 export const Footer = () => {
-  // const [data, setData] = useState<SocialLinksContent | null>(null);
+  const [data, setData] = useState<SocialLinksContent | null>(null);
 
-  // useEffect(() => {
-  //   async function getData() {
-  //     const content = await getSocialLinks();
-  //     setData(content);
-  //   }
-  //   getData();
-  // }, []);
+  useEffect(() => {
+    async function getData() {
+      const content = await getSocialLinks();
+      setData(content);
+    }
+    getData();
+  }, []);
 
   return (
     <footer
@@ -66,7 +66,7 @@ export const Footer = () => {
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
           viewport={{ once: false, amount: 0.2 }}
         >
-          {["Home", "Services", "Pricing", "About-Us", "Contact-us"].map(
+          {["home", "about-us", "service", "calories-Cal", "contact-us"].map(
             (item, index) => (
               <motion.a
                 key={index}
@@ -75,7 +75,9 @@ export const Footer = () => {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >
-                {item}
+                {item.split('-').map(word => 
+                  word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+                ).join(' ')}
               </motion.a>
             )
           )}
@@ -89,9 +91,9 @@ export const Footer = () => {
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
           viewport={{ once: false, amount: 0.2 }}
         >
-          {true && (
+          {data?.linkedin && (
             <a
-              href={"data.linkedin"}
+              href={data.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               title="Visit LinkedIn Page"
@@ -101,9 +103,9 @@ export const Footer = () => {
             </a>
           )}
 
-          {true && (
+          {data?.facebook && (
             <a
-              href={"data.facebook"}
+              href={data.facebook}
               target="_blank"
               rel="noopener noreferrer"
               title="Visit LinkedIn Page"
@@ -113,9 +115,9 @@ export const Footer = () => {
             </a>
           )}
 
-          {true && (
+          {data?.twitter && (
             <a
-              href={"data.twitter"}
+              href={data.twitter}
               target="_blank"
               rel="noopener noreferrer"
               title="Visit LinkedIn Page"
@@ -125,9 +127,9 @@ export const Footer = () => {
             </a>
           )}
 
-          {true && (
+          {data?.instagram && (
             <a
-              href={"data.instagram"}
+              href={data.instagram}
               target="_blank"
               rel="noopener noreferrer"
               title="Visit LinkedIn Page"
@@ -137,9 +139,9 @@ export const Footer = () => {
             </a>
           )}
 
-          {true && (
+          {data?.youtube && (
             <a
-              href={"data.youtube"}
+              href={data.youtube}
               target="_blank"
               rel="noopener noreferrer"
               title="Visit LinkedIn Page"

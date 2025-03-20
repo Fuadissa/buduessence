@@ -65,21 +65,36 @@ export const Navbar = () => {
             `hidden lg:flex space-x-4 md:gap-4 lg:gap-8 transition-colors duration-500`
           )}
         >
-          <div className="flex justify-center items-center text-[#cabb89] font-sans">
+          <a
+            className="flex justify-center items-center text-[#cabb89] font-sans cursor-pointer"
+            href="aboutus"
+          >
             About Us
-          </div>
-          <div className="flex justify-center items-center text-[#cabb89] font-sans">
-            Our Services
-          </div>
-          <div className="flex justify-center items-center text-[#cabb89] font-sans">
-            Our Products
-          </div>
-          <div className="flex justify-center items-center text-[#cabb89] font-sans">
-            Case Study
-          </div>
-          <div className="flex justify-center items-center text-[#cabb89] font-sans">
+          </a>
+          <a
+            className="flex justify-center items-center text-[#cabb89] font-sans cursor-pointer"
+            href="#service"
+          >
+            Services
+          </a>
+          <a
+            className="flex justify-center items-center text-[#cabb89] font-sans cursor-pointer"
+            href="/blogs"
+          >
+            Blogs
+          </a>
+          <a
+            className="flex justify-center items-center text-[#cabb89] font-sans cursor-pointer"
+            href="#caloriescal"
+          >
+            Calories Calculator
+          </a>
+          <a
+            className="flex justify-center items-center text-[#cabb89] cursor-pointer font-sans"
+            href="#contactus"
+          >
             Contact Us
-          </div>
+          </a>
           <div className="flex justify-center items-center">
             <button
               className="bg-[#dabd5f] text-white px-4 py-2 rounded-md cursor-pointer"
@@ -143,23 +158,41 @@ export const Navbar = () => {
             exit="exit"
             variants={menuVariants}
           >
-            <div className="flex justify-center items-center text-[#cabb89] font-sans">
+            <a
+              className="flex justify-center items-center text-[#cabb89] font-sans cursor-pointer"
+              href="aboutus"
+            >
               About Us
-            </div>
-            <div className="flex justify-center items-center text-[#cabb89] font-sans">
-              Our Services
-            </div>
-            <div className="flex justify-center items-center text-[#cabb89] font-sans">
-              Our Products
-            </div>
-            <div className="flex justify-center items-center text-[#cabb89] font-sans">
-              Case Study
-            </div>
-            <div className="flex justify-center items-center text-[#cabb89] font-sans">
+            </a>
+            <a
+              className="flex justify-center items-center text-[#cabb89] font-sans cursor-pointer"
+              href="#service"
+            >
+              Services
+            </a>
+            <a
+              className="flex justify-center items-center text-[#cabb89] font-sans cursor-pointer"
+              href="/blogs"
+            >
+              Blogs
+            </a>
+            <a
+              className="flex justify-center items-center text-[#cabb89] font-sans cursor-pointer"
+              href="#caloriescal"
+            >
+              Calories Calculator
+            </a>
+            <a
+              className="flex justify-center items-center text-[#cabb89] cursor-pointer font-sans"
+              href="#contactus"
+            >
               Contact Us
-            </div>
+            </a>
             <div className="flex justify-center items-center">
-              <button className="bg-[#dabd5f] text-white px-4 py-2 rounded-md">
+              <button
+                className="bg-[#dabd5f] text-white px-4 py-2 rounded-md"
+                onClick={() => setIsDialogOpen(true)}
+              >
                 Join the Movement
               </button>
             </div>

@@ -45,7 +45,7 @@ export const ContactUs: React.FC = () => {
 
   return (
     <motion.section
-      id="contact"
+      id="contactus"
       className="lg:py-24 py-12 px-5 md:px-0"
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}

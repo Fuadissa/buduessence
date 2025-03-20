@@ -104,7 +104,7 @@ export const Calories = () => {
   const inView = useInView(ref, { once: true, amount: 0.2 });
 
   return (
-    <StyledSection ref={ref}>
+    <StyledSection ref={ref} id="caloriescal">
       <MotionContainer
         maxWidth="sm"
         initial="hidden"

@@ -1,43 +1,49 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { motion, useInView } from "framer-motion";
+import { getServiceContent } from "@/sanity/sanity-utils";
+
+interface Service {
+  title: string;
+  description: string;
+  label: string;
+  _key: string;
+}
+
+interface ServiceContent {
+  title: string;
+  description: string;
+  services: Service[];
+  _createdAt: string;
+  _id: string;
+  _rev: string;
+  _type: string;
+  _updatedAt: string;
+}
 
 export const Services = () => {
-  const services = [
-    {
-      id: "01",
-      title: "Nourishing Beverages",
-      description:
-        "Crafted with nature’s best ingredients, our drinks provide essential nutrients that support a balanced and vibrant lifestyle.",
-    },
-    {
-      id: "02",
-      title: "Holistic Nutrition Plans",
-      description:
-        "We help you make mindful food choices with tailored guidance, ensuring a diet that promotes wellness inside and out.",
-    },
-    {
-      id: "03",
-      title: "Personalized Wellness Plans",
-      description:
-        "Your health journey is unique. Our experts create personalized wellness strategies to help you achieve lasting vitality.",
-    },
-    {
-      id: "04",
-      title: "Community & Support",
-      description:
-        "Join our vibrant wellness community, where support, encouragement, and expert insights help you stay on track.",
-    },
-  ];
-
   const ref = useRef(null);
 
   const inView = useInView(ref, { once: true, amount: 0.2 });
 
+  const [data, setData] = useState<ServiceContent | null>(null);
+
+  useEffect(() => {
+    async function getData() {
+      const content = await getServiceContent();
+      setData(content);
+    }
+    getData();
+  }, []);
+
   return (
-    <div ref={ref} className="max-w-6xl mx-auto px-6 md:px-12 lg:py-20 py-14 space-y-12">
+    <div
+      ref={ref}
+      className="max-w-6xl mx-auto px-6 md:px-12 lg:py-20 py-14 space-y-12"
+      id="service"
+    >
       {/* Header Section */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
@@ -46,21 +52,19 @@ export const Services = () => {
         className="text-center"
       >
         <h2 className="z-40 text-4xl md:text-4xl lg:text-6xl font-bold mt-6 tracking-tighter bg-gradient-to-b from-black to-[#f8efa1] text-transparent bg-clip-text">
-          What Do We Offer?
+          {data?.title}
         </h2>
         <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
-          At Budu Essence, we bring wellness to life through natural, holistic
-          solutions. Explore our services designed to nourish, uplift, and
-          sustain your well-being.
+          {data?.description}
         </p>
         <button className="btn mt-8">Learn More</button>
       </motion.div>
 
       {/* Services List */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        {services.map((service, index) => (
+        {data?.services.map((service, index) => (
           <motion.div
-            key={service.id}
+            key={service._key}
             initial={{ opacity: 0, y: 50 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 1, delay: index * 0.5 }}
@@ -75,7 +79,7 @@ export const Services = () => {
                 index === 2 ? "text-white border-white" : ""
               )}
             >
-              {service.id}_
+              0{index + 1}_
             </h3>
             <h4
               className={twMerge(

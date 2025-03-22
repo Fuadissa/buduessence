@@ -66,7 +66,7 @@ export const Footer = () => {
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
           viewport={{ once: false, amount: 0.2 }}
         >
-          {["home", "about-us", "service", "calories-Cal", "contact-us"].map(
+          {["home", "blogs", "about-us", "service", "calories-Cal", "contact-us"].map(
             (item, index) => (
               <motion.a
                 key={index}

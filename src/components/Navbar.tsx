@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { twMerge } from "tailwind-merge";
 import Image from "next/image";
 import { DialogBox } from "./DialogBox";
+import Link from "next/link";
 
 const headerVariants = {
   hidden: { opacity: 0, y: -50 },
@@ -77,12 +78,12 @@ export const Navbar = () => {
           >
             Services
           </a>
-          <a
+          <Link
             className="flex justify-center items-center text-[#cabb89] font-sans cursor-pointer"
             href="/blogs"
           >
             Blogs
-          </a>
+          </Link>
           <a
             className="flex justify-center items-center text-[#cabb89] font-sans cursor-pointer"
             href="#caloriescal"
@@ -170,12 +171,12 @@ export const Navbar = () => {
             >
               Services
             </a>
-            <a
+            <Link
               className="flex justify-center items-center text-[#cabb89] font-sans cursor-pointer"
               href="/blogs"
             >
               Blogs
-            </a>
+            </Link>
             <a
               className="flex justify-center items-center text-[#cabb89] font-sans cursor-pointer"
               href="#caloriescal"
